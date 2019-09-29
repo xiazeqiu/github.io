@@ -156,6 +156,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-求叶子节点数目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/求叶子节点数目/">求叶子节点数目</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/29/求叶子节点数目/" class="archive-article-date">
+  	<time datetime="2019-09-29T02:03:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="递归求二叉树叶子结点个数"><a href="#递归求二叉树叶子结点个数" class="headerlink" title="递归求二叉树叶子结点个数"></a>递归求二叉树叶子结点个数</h1><blockquote>
+<p>叶子结点是指没有子节点的结点，如下图中的DEH，这颗树有三个叶子结点数</p>
+</blockquote>
+<img src="/2019/09/29/求叶子节点数目/Snipaste_2019-09-29_10-46-07.png" style="zoom:75%;">
+
+<p>完整代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建二叉结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BINARYNODE</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> ch; <span class="comment">//数据</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BINARYNODE</span>* <span class="title">lChild</span>;</span> <span class="comment">//左孩子</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BINARYNODE</span>* <span class="title">rChild</span>;</span> <span class="comment">//右孩子</span></span><br><span class="line">&#125;BinaryNode;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//根左右遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CalLeftNum</span><span class="params">(BinaryNode* root,<span class="keyword">int</span> *count)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//结点为空返回</span></span><br><span class="line">	<span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (root-&gt;lChild == <span class="literal">NULL</span> &amp;&amp; root-&gt;rChild == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		(*count)++;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	CalLeftNum(root-&gt;lChild,count);</span><br><span class="line">	CalLeftNum(root-&gt;rChild,count);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建二叉树,并输出叶子结点数目</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatBinaryTree</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	BinaryNode node1 = &#123; <span class="string">'A'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node2 = &#123; <span class="string">'B'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node3 = &#123; <span class="string">'C'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node4 = &#123; <span class="string">'D'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node5 = &#123; <span class="string">'E'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node6 = &#123; <span class="string">'F'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node7 = &#123; <span class="string">'G'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node8 = &#123; <span class="string">'H'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//建立联系</span></span><br><span class="line">	node1.lChild = &amp;node2;</span><br><span class="line">	node1.rChild = &amp;node6;</span><br><span class="line">	node2.rChild = &amp;node3;</span><br><span class="line">	node3.lChild = &amp;node4;</span><br><span class="line">	node3.rChild = &amp;node5;</span><br><span class="line">	node6.rChild = &amp;node7;</span><br><span class="line">	node7.lChild = &amp;node8;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	CalLeftNum(&amp;node1,&amp;num);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"叶子结点个数为:%d\n"</span>, num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	CreatBinaryTree();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/29/求叶子节点数目/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-先序后序中序遍历二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
