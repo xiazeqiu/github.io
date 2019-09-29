@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.xiazeqiu.work">
-  <title>Archives: 2019/9 | 风</title>
+  <title>二叉树的深度 | 风</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="风">
-<meta property="og:url" content="http://www.xiazeqiu.work/archives/2019/09/index.html">
+  <meta name="description" content="递归计算二叉树的深度 二叉树的深度：从根节点到叶子节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度包含的节点数为为树的深度，即二叉树节点的层数。 如下图的层数为4    需要明确，图1是一个二叉树，其左子树图2，和右子树图3，也是二叉树 则图1(以A为根节点)的二叉树的深度 = max{图2（以B为根节点）的二叉树深度，图3（以B为根节点）的二叉树深度} + 1。    因此可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树的深度">
+<meta property="og:url" content="http://www.xiazeqiu.work/2019/09/29/二叉树的深度/index.html">
 <meta property="og:site_name" content="风">
+<meta property="og:description" content="递归计算二叉树的深度 二叉树的深度：从根节点到叶子节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度包含的节点数为为树的深度，即二叉树节点的层数。 如下图的层数为4    需要明确，图1是一个二叉树，其左子树图2，和右子树图3，也是二叉树 则图1(以A为根节点)的二叉树的深度 = max{图2（以B为根节点）的二叉树深度，图3（以B为根节点）的二叉树深度} + 1。    因此可以">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xiazeqiu.work/2019/09/29/二叉树的深度/Snipaste_2019-09-29_14-02-31.png">
+<meta property="og:image" content="http://www.xiazeqiu.work/2019/09/29/二叉树的深度/Snipaste_2019-09-29_14-07-51.png">
+<meta property="og:image" content="http://www.xiazeqiu.work/2019/09/29/二叉树的深度/Snipaste_2019-09-29_14-09-28.png">
+<meta property="og:updated_time" content="2019-09-29T06:16:44.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="风">
+<meta name="twitter:title" content="二叉树的深度">
+<meta name="twitter:description" content="递归计算二叉树的深度 二叉树的深度：从根节点到叶子节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度包含的节点数为为树的深度，即二叉树节点的层数。 如下图的层数为4    需要明确，图1是一个二叉树，其左子树图2，和右子树图3，也是二叉树 则图1(以A为根节点)的二叉树的深度 = max{图2（以B为根节点）的二叉树深度，图3（以B为根节点）的二叉树深度} + 1。    因此可以">
+<meta name="twitter:image" content="http://www.xiazeqiu.work/2019/09/29/二叉树的深度/Snipaste_2019-09-29_14-02-31.png">
   
     <link rel="alternative" href="/atom.xml" title="风" type="application/atom+xml">
   
@@ -154,184 +162,172 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-二叉树的深度" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      二叉树的深度
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/29/二叉树的深度/" class="archive-article-date">
+
+        
+        <a href="/2019/09/29/二叉树的深度/" class="archive-article-date">
   	<time datetime="2019-09-29T05:59:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/29/二叉树的深度/">二叉树的深度</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="递归计算二叉树的深度"><a href="#递归计算二叉树的深度" class="headerlink" title="递归计算二叉树的深度"></a>递归计算二叉树的深度</h1><blockquote>
+<p>二叉树的深度：从根节点到叶子节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度包含的节点数为为树的深度，即二叉树节点的层数。</p>
+<p>如下图的层数为4</p>
+</blockquote>
+<p><img src="/2019/09/29/二叉树的深度/Snipaste_2019-09-29_14-02-31.png" alt="图1"></p>
+<blockquote>
+<p>需要明确，图1是一个二叉树，其左子树图2，和右子树图3，也是二叉树</p>
+<p>则图1(以A为根节点)的二叉树的深度 = max{图2（以B为根节点）的二叉树深度，图3（以B为根节点）的二叉树深度} + 1。</p>
+</blockquote>
+<p><img src="/2019/09/29/二叉树的深度/Snipaste_2019-09-29_14-07-51.png" alt="图2"></p>
+<p><img src="/2019/09/29/二叉树的深度/Snipaste_2019-09-29_14-09-28.png" alt="图3"></p>
+<p>因此可以得到递归的关系：</p>
+<p>1 、如果没有左右子树，则其深度为1.</p>
+<p>2、如果有左右子树，则其深度为左右子树深度中较大的数+1</p>
+<p>代码为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建二叉结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BINARYNODE</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> ch; <span class="comment">//数据</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BINARYNODE</span>* <span class="title">lChild</span>;</span> <span class="comment">//左孩子</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BINARYNODE</span>* <span class="title">rChild</span>;</span> <span class="comment">//右孩子</span></span><br><span class="line">&#125;BinaryNode;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归求二叉树深度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">TreeDepth</span><span class="params">(BinaryNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (root-&gt;lChild == <span class="literal">NULL</span> &amp;&amp; root-&gt;rChild == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> leftDepth = TreeDepth(root-&gt;lChild);</span><br><span class="line">	<span class="keyword">int</span> rightDepth = TreeDepth(root-&gt;rChild);</span><br><span class="line">	<span class="keyword">if</span> (leftDepth &gt; rightDepth)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> leftDepth + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> rightDepth + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatBinaryTree</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	BinaryNode node1 = &#123; <span class="string">'A'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node2 = &#123; <span class="string">'B'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node3 = &#123; <span class="string">'C'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node4 = &#123; <span class="string">'D'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node5 = &#123; <span class="string">'E'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node6 = &#123; <span class="string">'F'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node7 = &#123; <span class="string">'G'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line">	BinaryNode node8 = &#123; <span class="string">'H'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//建立联系</span></span><br><span class="line">	node1.lChild = &amp;node2;</span><br><span class="line">	node1.rChild = &amp;node6;</span><br><span class="line">	node2.rChild = &amp;node3;</span><br><span class="line">	node3.lChild = &amp;node4;</span><br><span class="line">	node3.rChild = &amp;node5;</span><br><span class="line">	node6.rChild = &amp;node7;</span><br><span class="line">	node7.lChild = &amp;node8;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> dep = TreeDepth(&amp;node1);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"树的深度是:%d"</span>,dep);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	CreatBinaryTree();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.xiazeqiu.work/2019/09/29/二叉树的深度/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/29/求叶子节点数目/" class="archive-article-date">
-  	<time datetime="2019-09-29T02:03:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/29/求叶子节点数目/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">求叶子节点数目</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/29/求叶子节点数目/">求叶子节点数目</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/27/先序后序中序遍历二叉树/" class="archive-article-date">
-  	<time datetime="2019-09-27T07:51:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/27/先序后序中序遍历二叉树/">先序后序中序遍历二叉树</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/26/后缀表达式计算/" class="archive-article-date">
-  	<time datetime="2019-09-26T13:25:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/26/后缀表达式计算/">后缀表达式计算</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/26/中缀表达式转后缀表达式/" class="archive-article-date">
-  	<time datetime="2019-09-26T11:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/26/中缀表达式转后缀表达式/">中缀表达式转后缀表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/23/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-23T13:04:20.563Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -354,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
